@@ -1,101 +1,84 @@
-import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      <div
+        id="home"
+        className="flex min-h-screen flex-col bg- items-center justify-center text-center"
+      >
+        <p className="text-4xl">Hi, I’m Muhammad Afif - Frontend Developer</p>
+        <p className="mt-4 max-w-xl">
+          Specializing in Next.js, Tailwind CSS, JavaScript, and TypeScript. I
+          build sleek, responsive, and user-friendly web applications.
+        </p>
+        <Link
+          href="#work"
+          className="bg-black text-white hover:text-black border border-black px-4 py-2 rounded mt-4 hover:bg-white transition duration-300"
+        >
+          View My Work
+        </Link>
+      </div>
+      <div
+        id="about"
+        className="bg-gray-100 flex min-h-screen flex-col bg- items-center justify-center text-center"
+      >
+        <p className="text-4xl">About Me</p>
+        <p className="mt-4 max-w-xl">
+          I’m a frontend developer passionate about crafting intuitive and
+          efficient web experiences. With expertise in modern tools like Next.js
+          and Tailwind CSS, I bring ideas to life through clean, scalable code.
+        </p>
+      </div>
+      <div
+        id="work"
+        className="flex min-h-screen flex-col bg- items-center justify-center text-center"
+      >
+        <p className="text-4xl">My Work</p>
+        <p className="mt-4">
+          Here are some of the projects I’ve built using Next.js, Tailwind CSS,
+          and more.
+        </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((e, i) => (
+            <div
+              key={i}
+              className="aspect-square flex items-center justify-center border border-gray-300 p-4 rounded "
+            >
+              Project {e}
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <div
+        id="contact"
+        className="bg-gray-100 flex min-h-screen flex-col bg- items-center justify-center text-center"
+      >
+        <p className="text-4xl">Let’s Connect</p>
+        <p className="mt-4 max-w-xl">
+          Have a project or idea? Reach out and let’s create something amazing
+          together!
+        </p>
+
+        <div className="flex mt-4 gap-4">
+          <Link
+            className="bg-black text-white hover:text-black border border-black px-4 py-2 rounded hover:bg-white transition duration-300"
+            href="mailto:muhammad.afif5069@gmail.com"
+          >
+            Email Me
+          </Link>
+          <Link
+            className="bg-black text-white hover:text-black border border-black px-4 py-2 rounded hover:bg-white transition duration-300"
+            href="https://www.linkedin.com/in/mhmmd-afif/"
+          >
+            Connect on LinkedIn
+          </Link>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default page;
