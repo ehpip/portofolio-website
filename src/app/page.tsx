@@ -3,34 +3,43 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <div
-        id="home"
-        className="flex min-h-screen flex-col bg- items-center justify-center text-center"
+    <div className="flex justify-center items-center flex-col min-h-screen">
+      <nav
+        id="navbar"
+        className="flex flex-col lg:flex-row max-w-6xl w-full items-start gap-4 top-0 left-0 right-0 lg:items-center justify-between p-8"
       >
-        <p className="text-4xl">Hi, I’m Muhammad Afif - Frontend Developer</p>
-        <p className="mt-4 max-w-xl">
-          Specializing in Next.js, Tailwind CSS, JavaScript, and TypeScript. I
-          build sleek, responsive, and user-friendly web applications.
+        <div>
+          <p>Based in</p>
+          <p>Jakarta, Indonesia</p>
+        </div>
+
+        <div className="hidden lg:flex flex-col">
+          <p>Say Hi</p>
+          <Link href="mailto:muhammad.afif5069@gmail.com" className="underline">
+            muhammad.afif5069@gmail.com
+          </Link>
+        </div>
+
+        <div className="gap-4 hidden lg:flex">
+          <Link href={""}>ABOUT</Link>
+          <Link href={""}>EXPERIENCE</Link>
+          <Link href={""}>PROJECTS</Link>
+          <Link href={""}>CONTACT</Link>
+        </div>
+      </nav>
+
+      <div className="max-w-6xl text-4xl md:text-8xl lg:text-9xl w-full font-bold">
+        <h1 className="px-10 flex items-center h-40 lg:h-60">MUHAMMAD</h1>
+        <h1 className="px-10 flex items-center h-40 lg:h-60 justify-end bg-slate-300">
+          AFIF
+        </h1>
+        <p className="text-base font-normal lg:w-[50%] px-10 flex items-center h-60">
+          Frontend Developer Specializing in React.js, Next.js, and React Native
+          development. Creating beautiful, responsive web applications with
+          modern technologies.
         </p>
-        <Link
-          href="#work"
-          className="bg-black text-white hover:text-black border border-black px-4 py-2 rounded mt-4 hover:bg-white transition duration-300"
-        >
-          View My Work
-        </Link>
       </div>
-      <div
-        id="about"
-        className="bg-gray-100 flex min-h-screen flex-col bg- items-center justify-center text-center"
-      >
-        <p className="text-4xl">About Me</p>
-        <p className="mt-4 max-w-xl">
-          I’m a frontend developer passionate about crafting intuitive and
-          efficient web experiences. With expertise in modern tools like Next.js
-          and Tailwind CSS, I bring ideas to life through clean, scalable code.
-        </p>
-      </div>
+
       <div
         id="work"
         className="flex min-h-screen flex-col bg- items-center justify-center text-center"
