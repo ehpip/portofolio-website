@@ -24,6 +24,14 @@ const PROJECTS = [
     tech: ["Next.js", "TypeScript", "Material UI"],
   },
   {
+    id: 7,
+    title: "Forum Ortax",
+    image: "/images/forum-ortax.png",
+    desc: "A collaborative discussion platform focused on Indonesian tax topics",
+    url: "https://forum.ortax.org/",
+    tech: ["NextJS", "TailwindCSS", "Mantine UI"],
+  },
+  {
     id: 2,
     title: "Bhinneka Sentra Advisory",
     image: "/images/bsa.png",
@@ -63,14 +71,7 @@ const PROJECTS = [
     url: "https://datacenter.ortax.org/ortax/objek-tarif-pph",
     tech: ["React", "Database Integration"],
   },
-  {
-    id: 7,
-    title: "First Portfolio Website",
-    image: "/images/afif-first-portfolio.png",
-    desc: "My first portfolio web application",
-    url: "https://afif-porotfolio.netlify.app/",
-    tech: ["React", "Sanity", "Netlify"],
-  },
+
   {
     id: 8,
     title: "Vine - Tiktok clone app",
@@ -92,8 +93,9 @@ const PROJECTS = [
     title: "Ortax Internal CRM",
     image: "/images/crm.png",
     desc: "Customer relation management web application",
-    url: "/",
+    url: null,
     tech: ["Next.js", "Material UI", "API Integration"],
+    isPrivate: true,
   },
   {
     id: 11,
@@ -103,29 +105,38 @@ const PROJECTS = [
     url: "https://hoobank-modern.netlify.app/",
     tech: ["Vite", "Tailwind", "Netlify"],
   },
+  {
+    id: 12,
+    title: "Shoppy Admin Dashboard Template",
+    image: "/images/admin-dashboard-template.png",
+    desc: "Shoppy Admin Dashboard Template",
+    url: "https://admindashboardtemplate.netlify.app/",
+    tech: ["React", "Tailwind", "Netlify"],
+  },
 ];
 
 const SKILLS = [
   {
     icon: Code,
-    title: "Frontend Development",
-    desc: "React.js, Next.js, TypeScript",
+    title: "Web Application Development",
+    desc: "Scalable, high-performance apps with React.js, Next.js, and TypeScript",
   },
   {
     icon: Smartphone,
-    title: "Mobile Development",
-    desc: "React Native, Cross-platform",
+    title: "Cross-Platform Mobile Development",
+    desc: "Production-ready mobile apps using React Native",
   },
   {
     icon: Palette,
-    title: "UI/UX Design",
-    desc: "Modern, responsive interfaces",
+    title: "Frontend Architecture & UI Engineering",
+    desc: "Clean architecture, reusable components, and responsive design systems",
   },
 ];
 
 const EnhancedPortfolio = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -205,25 +216,22 @@ const EnhancedPortfolio = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="relative inline-block mb-8">
+            {/* <div className="relative inline-block mb-8">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-lg opacity-20 animate-pulse"></div>
               <div className="relative bg-white rounded-full p-8 shadow-xl">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold">
                   MA
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-4">
               MUHAMMAD AFIF
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Frontend Developer crafting beautiful, responsive web applications
-              with
-              <span className="text-blue-600 font-semibold"> React.js</span>,
-              <span className="text-blue-600 font-semibold"> Next.js</span>, and
-              <span className="text-blue-600 font-semibold"> React Native</span>
+              Software Engineer focused on developing high-quality applications
+              that combine performance, usability, and clean architecture.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -296,30 +304,42 @@ const EnhancedPortfolio = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PROJECTS.map((project) => (
-              <a
+              <button
                 key={project.id}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
+                onClick={() => {
+                  if (project.isPrivate) {
+                    setShowModal(true);
+                  } else {
+                    window.open(
+                      project.url || "",
+                      "_blank",
+                      "noopener,noreferrer"
+                    );
+                  }
+                }}
+                className="group text-left bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-100"
               >
                 <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
-                      <ExternalLink size={16} className="text-slate-700" />
+
+                  {!project.isPrivate && (
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
+                        <ExternalLink size={16} className="text-slate-700" />
+                      </div>
                     </div>
-                  </div>
+                  )}
+
                   {project.image && (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   )}
                 </div>
+
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                     {project.title}
@@ -327,6 +347,7 @@ const EnhancedPortfolio = () => {
                   <p className="text-slate-600 mb-4 leading-relaxed">
                     {project.desc}
                   </p>
+
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, techIndex) => (
                       <span
@@ -338,7 +359,7 @@ const EnhancedPortfolio = () => {
                     ))}
                   </div>
                 </div>
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -351,11 +372,13 @@ const EnhancedPortfolio = () => {
       >
         <div className="max-w-4xl mx-auto px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Let&apos;s Create Something Amazing
+            Let&apos;s Work Together
           </h2>
+          <p className="text-xl text-blue-100  max-w-2xl mx-auto leading-relaxed">
+            Open to collaborations and new opportunities.
+          </p>
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Have a project in mind or want to collaborate? I&apos;d love to hear
-            from you and discuss how we can bring your ideas to life.
+            Let&apos;s connect and explore how we can create impact together.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
@@ -401,6 +424,28 @@ const EnhancedPortfolio = () => {
           </div>
         </div>
       </section>
+
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl max-w-md w-full p-8 text-center shadow-2xl animate-in fade-in zoom-in">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              Project Not Available
+            </h3>
+
+            <p className="text-slate-600 mb-6 leading-relaxed">
+              This project cannot be previewed publicly because it is an
+              internal company system and not disclosed for public access.
+            </p>
+
+            <button
+              onClick={() => setShowModal(false)}
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:scale-105 transition-transform"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
