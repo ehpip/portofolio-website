@@ -16,6 +16,22 @@ import { useEffect, useState } from "react";
 
 const PROJECTS = [
   {
+    id: 14,
+    title: "Zawaj.id",
+    image: "/images/zawaj.png",
+    desc: "Wedding vendor marketplace platform in Indonesia",
+    url: "https://zawaj.vercel.app",
+    tech: ["Next.js", "Vercel", "Marketplace"],
+  },
+  {
+    id: 13,
+    title: "Hasel",
+    image: "/images/hasel.png",
+    desc: "Creative freelance marketplace connecting talented freelancers with clients",
+    url: "https://hasel.vercel.app",
+    tech: ["Next.js", "Vercel", "Marketplace"],
+  },
+  {
     id: 1,
     title: "Pajak101",
     image: "/images/pajak101.png",
@@ -313,7 +329,7 @@ const EnhancedPortfolio = () => {
                     window.open(
                       project.url || "",
                       "_blank",
-                      "noopener,noreferrer"
+                      "noopener,noreferrer",
                     );
                   }
                 }}
